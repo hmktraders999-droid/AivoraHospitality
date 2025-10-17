@@ -40,7 +40,7 @@ export default function HeroSection() {
             <Button
               size="lg"
               variant="outline"
-              className="px-8 py-6 text-lg bg-background/20 backdrop-blur-sm border-white/20 hover:bg-background/30"
+              className="px-8 py-6 text-lg bg-background/60 backdrop-blur-sm border-white/30 hover:bg-background/70"
               onClick={() => {
                 const element = document.getElementById('services');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
