@@ -46,56 +46,56 @@ export default function ContactSection() {
 
         <Card className="bg-white/5 backdrop-blur-lg border-white/10">
           <CardHeader>
-            <CardTitle>Contact Us</CardTitle>
+            <CardTitle className="text-foreground">Contact Us</CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name" className="text-foreground">Name</Label>
                 <Input
                   id="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
-                  className="bg-white/5 border-white/10 focus:border-primary"
+                  className="bg-white/5 border-white/10 focus:border-primary text-foreground"
                   data-testid="input-name"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-foreground">Email</Label>
                 <Input
                   id="email"
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
-                  className="bg-white/5 border-white/10 focus:border-primary"
+                  className="bg-white/5 border-white/10 focus:border-primary text-foreground"
                   data-testid="input-email"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="businessName">Business Name</Label>
+                <Label htmlFor="businessName" className="text-foreground">Business Name</Label>
                 <Input
                   id="businessName"
                   value={formData.businessName}
                   onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
                   required
-                  className="bg-white/5 border-white/10 focus:border-primary"
+                  className="bg-white/5 border-white/10 focus:border-primary text-foreground"
                   data-testid="input-business"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
+                <Label htmlFor="message" className="text-foreground">Message</Label>
                 <Textarea
                   id="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required
                   rows={5}
-                  className="bg-white/5 border-white/10 focus:border-primary resize-none"
+                  className="bg-white/5 border-white/10 focus:border-primary resize-none text-foreground"
                   data-testid="input-message"
                 />
               </div>

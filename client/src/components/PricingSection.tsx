@@ -76,19 +76,19 @@ export default function PricingSection() {
                 </div>
               )}
               <CardHeader>
-                <CardTitle className="text-2xl">{plan.name}</CardTitle>
+                <CardTitle className="text-2xl text-foreground">{plan.name}</CardTitle>
                 <div className="mt-4">
-                  <span className="text-4xl font-display font-bold">{plan.price}</span>
-                  <span className="text-muted-foreground">{plan.period}</span>
+                  <span className="text-4xl font-display font-bold text-foreground">{plan.price}</span>
+                  <span className="text-foreground/70">{plan.period}</span>
                 </div>
-                <p className="text-muted-foreground mt-2">{plan.description}</p>
+                <p className="text-foreground/80 mt-2">{plan.description}</p>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                      <span className="text-sm">{feature}</span>
+                      <span className="text-sm text-foreground/90">{feature}</span>
                     </li>
                   ))}
                 </ul>

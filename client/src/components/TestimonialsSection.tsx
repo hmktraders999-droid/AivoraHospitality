@@ -65,7 +65,7 @@ export default function TestimonialsSection() {
               ))}
             </div>
 
-            <blockquote className="text-lg lg:text-xl text-center mb-8 italic">
+            <blockquote className="text-lg lg:text-xl text-center mb-8 italic text-foreground">
               "{currentTestimonial.content}"
             </blockquote>
 
@@ -76,8 +76,8 @@ export default function TestimonialsSection() {
                 </AvatarFallback>
               </Avatar>
               <div className="text-left">
-                <p className="font-semibold">{currentTestimonial.name}</p>
-                <p className="text-sm text-muted-foreground">{currentTestimonial.role}</p>
+                <p className="font-semibold text-foreground">{currentTestimonial.name}</p>
+                <p className="text-sm text-foreground/70">{currentTestimonial.role}</p>
               </div>
             </div>
 

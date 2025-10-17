@@ -53,10 +53,10 @@ export default function ServicesSection() {
                 <div className="mb-4 w-16 h-16 rounded-full bg-gradient-to-br from-primary to-chart-2 flex items-center justify-center">
                   <service.icon className="w-8 h-8 text-primary-foreground" />
                 </div>
-                <CardTitle className="text-xl">{service.title}</CardTitle>
+                <CardTitle className="text-xl text-foreground">{service.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">{service.description}</p>
+                <p className="text-foreground/80">{service.description}</p>
               </CardContent>
             </Card>
           ))}
