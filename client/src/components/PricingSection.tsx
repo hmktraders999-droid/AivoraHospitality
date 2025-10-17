@@ -16,6 +16,7 @@ const pricingPlans = [
       'Email Support',
       'Monthly Analytics Reports',
     ],
+    popular: true,
   },
   {
     name: 'Premium',
@@ -32,7 +33,6 @@ const pricingPlans = [
       'Real-time Analytics Dashboard',
       'API Access',
     ],
-    popular: true,
   },
 ];
 
@@ -53,6 +53,9 @@ export default function PricingSection() {
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Choose the plan that fits your business needs
+          </p>
+          <p className="text-sm text-muted-foreground mt-4">
+            * One-time setup fee of $500 applies to all plans
           </p>
         </div>
 
