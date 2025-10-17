@@ -96,7 +96,7 @@ export default function PricingSection() {
               <CardFooter>
                 <Button
                   className="w-full"
-                  variant={plan.popular ? 'default' : 'outline'}
+                  variant="default"
                   onClick={scrollToContact}
                   data-testid={`button-get-started-${plan.name.toLowerCase()}`}
                 >
