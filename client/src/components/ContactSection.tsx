@@ -44,17 +44,29 @@ export default function ContactSection() {
         description: `Thanks ${formData.name}! Connecting you to our AI Demo...`,
       });
 
-      // Load Vapi widget for voice demo
-      const vapiWidget = document.createElement('vapi-widget');
-      vapiWidget.setAttribute('assistant-id', '69c583d7-f0e0-48fd-8756-bd8e4c0e0cdc');
-      vapiWidget.setAttribute('public-key', 'c714c64a-da01-4f61-85ec-7825be2630b7');
-      document.body.appendChild(vapiWidget);
+      // Fetch Vapi configuration from backend
+      const vapiConfigResponse = await fetch('/api/vapi-config');
+      
+      if (!vapiConfigResponse.ok) {
+        const errorData = await vapiConfigResponse.json();
+        throw new Error(errorData.error || 'Failed to load demo configuration');
+      }
 
-      const script = document.createElement('script');
-      script.src = 'https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js';
-      script.async = true;
-      script.type = 'text/javascript';
-      document.body.appendChild(script);
+      const vapiConfig = await vapiConfigResponse.json();
+
+      // Load Vapi widget for voice demo
+      if (!document.querySelector('vapi-widget')) {
+        const vapiWidget = document.createElement('vapi-widget');
+        vapiWidget.setAttribute('assistant-id', vapiConfig.assistantId);
+        vapiWidget.setAttribute('public-key', vapiConfig.publicKey);
+        document.body.appendChild(vapiWidget);
+
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js';
+        script.async = true;
+        script.type = 'text/javascript';
+        document.body.appendChild(script);
+      }
 
       setFormData({ name: '', email: '', businessName: '', contactNumber: '' });
     } catch (error: any) {
