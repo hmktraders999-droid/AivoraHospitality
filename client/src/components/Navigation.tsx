@@ -37,7 +37,7 @@ export default function Navigation() {
               onClick={() => scrollToSection('hero')}
               data-testid="logo-aivora"
             >
-              Aivora Hospitality
+              Aivora
             </h1>
           </div>
 

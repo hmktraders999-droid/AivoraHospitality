@@ -9,7 +9,7 @@ const services = [
   },
   {
     icon: Phone,
-    title: 'Voice Agents (Vapi)',
+    title: 'Voice Agents',
     description: 'Never miss a call again. AI voice agents handle reservations, inquiries, and customer support 24/7.',
   },
   {

@@ -34,7 +34,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 pt-8 border-t border-white/10">
           <div>
             <h3 className="text-2xl font-display font-bold bg-gradient-to-r from-primary to-chart-2 bg-clip-text text-transparent mb-4">
-              Aivora Hospitality
+              Aivora
             </h3>
             <p className="text-foreground/80 max-w-md">
               AI-powered automation solutions for hospitality businesses. Transform your customer experience with cutting-edge technology.
@@ -81,7 +81,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 text-center text-sm text-foreground/70">
-          <p>&copy; {new Date().getFullYear()} Aivora Hospitality. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Aivora. All rights reserved.</p>
         </div>
       </div>
     </footer>
