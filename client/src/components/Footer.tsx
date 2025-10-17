@@ -14,10 +14,10 @@ export default function Footer() {
     <footer className="relative border-t border-white/10 bg-[#0A0A0A]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
-          <h3 className="text-2xl md:text-3xl font-display font-bold mb-4">
+          <h3 className="text-2xl md:text-3xl font-display font-bold mb-4 text-foreground">
             Ready to Transform Your Hospitality Business?
           </h3>
-          <p className="text-muted-foreground mb-6">
+          <p className="text-foreground/80 mb-6">
             Join hundreds of restaurants, cafés, and hotels using AI automation
           </p>
           <Button
@@ -36,13 +36,13 @@ export default function Footer() {
             <h3 className="text-2xl font-display font-bold bg-gradient-to-r from-primary to-chart-2 bg-clip-text text-transparent mb-4">
               Aivora Hospitality
             </h3>
-            <p className="text-muted-foreground max-w-md">
+            <p className="text-foreground/80 max-w-md">
               AI-powered automation solutions for hospitality businesses. Transform your customer experience with cutting-edge technology.
             </p>
           </div>
 
           <div className="md:text-right">
-            <h4 className="font-semibold mb-4">Connect With Us</h4>
+            <h4 className="font-semibold mb-4 text-foreground">Connect With Us</h4>
             <div className="flex gap-4 md:justify-end">
               <a
                 href="#"
@@ -80,7 +80,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 text-center text-sm text-muted-foreground">
+        <div className="border-t border-white/10 pt-8 text-center text-sm text-foreground/70">
           <p>&copy; {new Date().getFullYear()} Aivora Hospitality. All rights reserved.</p>
         </div>
       </div>

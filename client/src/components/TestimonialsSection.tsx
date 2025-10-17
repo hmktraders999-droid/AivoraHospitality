@@ -49,10 +49,10 @@ export default function TestimonialsSection() {
     <section id="testimonials" className="relative py-20 lg:py-32 px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 text-foreground">
             What Our Clients Say
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-foreground/80">
             Trusted by hospitality businesses worldwide
           </p>
         </div>

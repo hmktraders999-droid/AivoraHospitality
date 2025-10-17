@@ -48,13 +48,13 @@ export default function PricingSection() {
     <section id="pricing" className="relative py-20 lg:py-32 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 text-foreground">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
             Choose the plan that fits your business needs
           </p>
-          <p className="text-sm text-muted-foreground mt-4">
+          <p className="text-sm text-foreground/70 mt-4">
             * One-time setup fee of $500 applies to all plans
           </p>
         </div>
