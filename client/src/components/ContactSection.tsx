@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { Send, Mail, User, Building2, MessageSquare } from 'lucide-react';
+import { Send, Mail, User, Building2, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function ContactSection() {
@@ -14,7 +13,7 @@ export default function ContactSection() {
     name: '',
     email: '',
     businessName: '',
-    message: '',
+    contactNumber: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -22,16 +21,52 @@ export default function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    console.log('Form submitted:', formData);
-
-    setTimeout(() => {
-      toast({
-        title: 'Message Sent!',
-        description: "We'll get back to you within 24 hours.",
+    try {
+      const response = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          business_name: formData.businessName,
+          contact_number: formData.contactNumber,
+        }),
       });
-      setFormData({ name: '', email: '', businessName: '', message: '' });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Submission failed');
+      }
+
+      toast({
+        title: 'Demo Booked!',
+        description: `Thanks ${formData.name}! Connecting you to our AI Demo...`,
+      });
+
+      // Load Vapi widget for voice demo
+      const vapiWidget = document.createElement('vapi-widget');
+      vapiWidget.setAttribute('assistant-id', '69c583d7-f0e0-48fd-8756-bd8e4c0e0cdc');
+      vapiWidget.setAttribute('public-key', 'c714c64a-da01-4f61-85ec-7825be2630b7');
+      document.body.appendChild(vapiWidget);
+
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js';
+      script.async = true;
+      script.type = 'text/javascript';
+      document.body.appendChild(script);
+
+      setFormData({ name: '', email: '', businessName: '', contactNumber: '' });
+    } catch (error: any) {
+      console.error('Submission error:', error);
+      toast({
+        title: 'Error',
+        description: error.message || 'Could not submit form. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -170,19 +205,19 @@ export default function ContactSection() {
                   transition={{ delay: 0.4 }}
                   className="space-y-2"
                 >
-                  <Label htmlFor="message" className="text-foreground flex items-center gap-2">
-                    <MessageSquare className="w-4 h-4 text-blue-400" />
-                    Message
+                  <Label htmlFor="contactNumber" className="text-foreground flex items-center gap-2">
+                    <Phone className="w-4 h-4 text-blue-400" />
+                    Contact Number
                   </Label>
-                  <Textarea
-                    id="message"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  <Input
+                    id="contactNumber"
+                    type="tel"
+                    value={formData.contactNumber}
+                    onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
                     required
-                    rows={5}
-                    placeholder="Tell us about your business needs..."
-                    className="bg-white/5 border-white/10 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 resize-none text-foreground transition-all duration-300"
-                    data-testid="input-message"
+                    placeholder="+1 (555) 123-4567"
+                    className="bg-white/5 border-white/10 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-foreground transition-all duration-300 h-12"
+                    data-testid="input-contact-number"
                   />
                 </motion.div>
 
@@ -208,11 +243,11 @@ export default function ContactSection() {
                         >
                           <Send className="w-5 h-5" />
                         </motion.div>
-                        Sending...
+                        Booking...
                       </span>
                     ) : (
                       <span className="flex items-center gap-2">
-                        Send Message
+                        Book a Demo
                         <Send className="w-5 h-5" />
                       </span>
                     )}
