@@ -91,11 +91,7 @@ export default function PricingSection() {
               whileHover={{ y: -8 }}
             >
               <Card
-                className={`group h-full relative overflow-hidden backdrop-blur-lg transition-all duration-500 ${
-                  plan.popular
-                    ? 'border-blue-500/50 bg-gradient-to-br from-blue-500/10 to-cyan-500/5 shadow-xl shadow-blue-500/20'
-                    : 'bg-white/5 border-white/10 hover:border-blue-500/30'
-                }`}
+                className="group h-full relative overflow-hidden backdrop-blur-lg transition-all duration-500 border-blue-500/50 bg-gradient-to-br from-blue-500/10 to-cyan-500/5 shadow-xl shadow-blue-500/20"
                 data-testid={`card-pricing-${plan.name.toLowerCase()}`}
               >
                 {plan.popular && (
@@ -150,11 +146,7 @@ export default function PricingSection() {
                 <CardFooter className="relative">
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full">
                     <Button
-                      className={`w-full text-base font-semibold py-6 ${
-                        plan.popular
-                          ? 'bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-lg shadow-blue-500/30'
-                          : 'bg-gradient-to-r from-blue-600/80 to-cyan-600/80 hover:from-blue-500 hover:to-cyan-500'
-                      }`}
+                      className="w-full text-base font-semibold py-6 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-lg shadow-blue-500/30"
                       onClick={scrollToContact}
                       data-testid={`button-get-started-${plan.name.toLowerCase()}`}
                     >

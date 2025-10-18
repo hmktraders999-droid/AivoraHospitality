@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Star, Phone, Globe, MessageSquare, Database } from 'lucide-react';
+import { Star, Phone, Globe, MessageSquare, Database, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const services = [
@@ -17,9 +17,15 @@ const services = [
   },
   {
     icon: Globe,
-    title: 'Website Design & Automation',
-    description: 'Modern, conversion-optimized websites with integrated automation workflows for seamless operations.',
+    title: 'Website Design',
+    description: 'Modern, conversion-optimized websites designed to attract customers and drive bookings.',
     gradient: 'from-green-500 to-emerald-500',
+  },
+  {
+    icon: Zap,
+    title: 'Automation',
+    description: 'Integrated automation workflows for seamless operations and enhanced productivity.',
+    gradient: 'from-purple-500 to-pink-500',
   },
   {
     icon: MessageSquare,
