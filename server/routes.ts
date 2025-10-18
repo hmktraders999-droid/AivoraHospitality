@@ -1,15 +1,8 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { createClient } from "@supabase/supabase-js";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Initialize Supabase client
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_ANON_KEY!
-  );
-
   // API endpoint to handle contact form submission
   app.post("/api/submit", async (req, res) => {
     try {
@@ -19,17 +12,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Name and email are required" });
       }
 
-      const { data, error } = await supabase
-        .from("leads")
-        .insert([{ name, email, business_name, contact_number }])
-        .select();
+      const lead = await storage.createLead({
+        name,
+        email,
+        business_name: business_name || null,
+        contact_number: contact_number || null,
+      });
 
-      if (error) {
-        console.error("Supabase error:", error);
-        throw error;
-      }
-
-      res.json({ success: true, message: "Lead stored successfully", data });
+      res.json({ success: true, message: "Lead stored successfully", data: lead });
     } catch (err: any) {
       console.error("Error storing lead:", err);
       res.status(500).json({ error: err.message || "Failed to store lead" });
