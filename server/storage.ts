@@ -1,12 +1,14 @@
 import { type User, type InsertUser, type Lead, type InsertLead, users, leads } from "@shared/schema";
-import { drizzle } from "drizzle-orm/neon-serverless";
+import { neon } from "@neondatabase/serverless";
+import { drizzle } from "drizzle-orm/neon-http";
 import { eq } from "drizzle-orm";
 
 if (!process.env.DATABASE_URL) {
   throw new Error("DATABASE_URL is not set");
 }
 
-const db = drizzle(process.env.DATABASE_URL);
+const sql = neon(process.env.DATABASE_URL);
+const db = drizzle(sql);
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
