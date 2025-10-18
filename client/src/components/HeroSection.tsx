@@ -140,7 +140,7 @@ export default function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="px-10 py-7 text-lg font-semibold bg-background/30 backdrop-blur-md border-2 border-blue-500/30 hover:border-blue-500/60 hover:bg-background/50 text-foreground transition-all duration-300"
+                className="px-10 py-7 text-lg font-semibold bg-background/30 backdrop-blur-md border-2 border-cyan-400/50 hover:border-cyan-400/80 hover:bg-background/50 text-cyan-300 hover:text-cyan-200 transition-all duration-300"
                 onClick={() => {
                   const element = document.getElementById('services');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });

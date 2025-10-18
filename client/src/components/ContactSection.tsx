@@ -118,10 +118,10 @@ export default function ContactSection() {
             <span className="text-sm text-blue-400 font-medium">Ready to Transform?</span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-foreground">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
             Get Started Today
           </h2>
-          <p className="text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-blue-300/90 max-w-2xl mx-auto leading-relaxed">
             Book a free demo and discover how AI can transform your hospitality business
           </p>
         </motion.div>

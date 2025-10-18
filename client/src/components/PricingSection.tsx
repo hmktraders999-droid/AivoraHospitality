@@ -68,15 +68,15 @@ export default function PricingSection() {
             <span className="text-sm text-blue-400 font-medium">Flexible Plans</span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-foreground">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-blue-300/90 max-w-3xl mx-auto leading-relaxed">
             Choose the plan that fits your business needs
           </p>
-          <p className="text-sm text-foreground/60 mt-6 inline-flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-            One-time setup fee of $500 applies to all plans
+          <p className="text-sm text-cyan-400 mt-6 inline-flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+            One-time setup fee of $1500 applies to all plans
           </p>
         </motion.div>
 
