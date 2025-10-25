@@ -25,6 +25,10 @@ form.addEventListener("submit", async (e) => {
     msg.textContent = `Thanks ${name}! Connecting you to our AI Demo...`;
 
     // ✅ Load Vapi widget (using your real assistant + public key)
+    if (document.querySelector("vapi-widget")) {
+      return; // Widget already exists
+    }
+    
     const vapiWidget = document.createElement("vapi-widget");
     vapiWidget.setAttribute("assistant-id", "69c583d7-f0e0-48fd-8756-bd8e4c0e0cdc");
     vapiWidget.setAttribute("public-key", "c714c64a-da01-4f61-85ec-7825be2630b7");
