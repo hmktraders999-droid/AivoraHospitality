@@ -54,38 +54,42 @@ export default function ContactSection() {
 
       const vapiConfig = await vapiConfigResponse.json();
 
-      // Load Vapi widget for voice demo
-      if (!document.querySelector('vapi-widget')) {
-        const vapiWidget = document.createElement('vapi-widget');
-        vapiWidget.setAttribute('assistant-id', vapiConfig.assistantId);
-        vapiWidget.setAttribute('public-key', vapiConfig.publicKey);
-        vapiWidget.setAttribute('mode', 'voice');
-        vapiWidget.setAttribute('theme', 'dark');
-        vapiWidget.setAttribute('base-bg-color', '#000000');
-        vapiWidget.setAttribute('accent-color', '#14B8A6');
-        vapiWidget.setAttribute('cta-button-color', '#000000');
-        vapiWidget.setAttribute('cta-button-text-color', '#ffffff');
-        vapiWidget.setAttribute('border-radius', 'large');
-        vapiWidget.setAttribute('size', 'full');
-        vapiWidget.setAttribute('position', 'bottom-right');
-        vapiWidget.setAttribute('title', 'TALK WITH AI');
-        vapiWidget.setAttribute('start-button-text', 'Start');
-        vapiWidget.setAttribute('end-button-text', 'End Call');
-        vapiWidget.setAttribute('cta-title', 'Take a Demo');
-        vapiWidget.setAttribute('chat-first-message', 'Hey, How can I help you today?');
-        vapiWidget.setAttribute('chat-placeholder', 'Type your message...');
-        vapiWidget.setAttribute('voice-show-transcript', 'true');
-        vapiWidget.setAttribute('consent-required', 'true');
-        vapiWidget.setAttribute('consent-title', 'Terms and conditions');
-        vapiWidget.setAttribute('consent-content', 'By clicking "Agree," and each time I interact with this AI agent, I consent to the recording, storage, and sharing of my communications with third-party service providers, and as otherwise described in our Terms of Service.');
-        vapiWidget.setAttribute('consent-storage-key', 'vapi_widget_consent');
-        document.body.appendChild(vapiWidget);
+      // Load Vapi Web SDK and initialize voice demo
+      const initializeVapiWidget = (apiKey: string, assistantId: string) => {
+        const buttonConfig = {
+          style: "round" as const,
+          position: "bottom-right" as const,
+          backgroundColor: "#14B8A6",
+          foregroundColor: "#FFFFFF",
+          width: "60px",
+          height: "60px",
+          offset: "40px"
+        };
 
+        (window as any).vapiInstance = (window as any).vapiSDK.run({
+          apiKey: apiKey,
+          assistant: assistantId,
+          config: buttonConfig
+        });
+
+        // Log events for debugging
+        if ((window as any).vapiInstance) {
+          (window as any).vapiInstance.on('call-start', () => console.log('Voice call started'));
+          (window as any).vapiInstance.on('call-end', () => console.log('Voice call ended'));
+          (window as any).vapiInstance.on('error', (error: any) => console.error('Vapi error:', error));
+        }
+      };
+
+      if (!(window as any).vapiSDK) {
         const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/embed/widget.umd.js';
+        script.src = 'https://cdn.vapi.ai/webclient/latest/vapi-client.js';
         script.async = true;
-        script.type = 'text/javascript';
-        document.body.appendChild(script);
+        script.onload = () => {
+          initializeVapiWidget(vapiConfig.publicKey, vapiConfig.assistantId);
+        };
+        document.head.appendChild(script);
+      } else {
+        initializeVapiWidget(vapiConfig.publicKey, vapiConfig.assistantId);
       }
 
       setFormData({ name: '', email: '', businessName: '', contactNumber: '' });
