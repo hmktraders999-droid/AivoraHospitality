@@ -11,6 +11,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   const supabase = supabaseUrl && supabaseAnonKey 
     ? createClient(supabaseUrl, supabaseAnonKey)
     : null;
+  
+  if (supabase) {
+    console.log("✅ Supabase client initialized successfully");
+  } else {
+    console.log("⚠️  Supabase client not initialized - missing credentials");
+  }
 
   // API endpoint to handle contact form submission
   app.post("/api/submit", async (req, res) => {
